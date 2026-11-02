@@ -4,7 +4,10 @@ import { Menu, X, MessageCircle, Droplets } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import fondo from "@/assets/fondo.jpeg.asset.json";
 
-export const WHATSAPP_URL = "https://wa.me/"; // TODO: agregar número de WhatsApp
+import { CONTACT, MAP_LINK_URL, WHATSAPP_URL } from "@/components/contact";
+
+export { WHATSAPP_URL };
+
 
 const nav = [
   { to: "/", label: "Inicio" },
@@ -86,9 +89,18 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-4 py-8 text-center text-sm text-foreground/80">
           <Droplets className="text-primary" />
           <p className="font-display text-lg">Bio Natural · Cristalina · Fresca · Pura</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <a href={CONTACT.phoneTel} className="hover:text-accent">{CONTACT.phoneDisplay}</a>
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-accent">WhatsApp {CONTACT.whatsappDisplay}</a>
+            <a href={`mailto:${CONTACT.email}`} className="hover:text-accent">{CONTACT.email}</a>
+          </div>
+          <p>{CONTACT.addressFull}</p>
+          <p>{CONTACT.hoursWeek} · {CONTACT.hoursSunday}</p>
+          <a href={MAP_LINK_URL} target="_blank" rel="noreferrer" className="underline hover:text-accent">Ver en mapa</a>
           <p>© {new Date().getFullYear()} Bio Natural. Agua purificada a domicilio.</p>
         </div>
       </footer>
+
     </div>
   );
 }

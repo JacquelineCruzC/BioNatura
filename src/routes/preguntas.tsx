@@ -10,9 +10,9 @@ const faqs = [
   ["¿Cómo solicito un pedido?", "Desde el botón “Pedir ahora”, por WhatsApp o llamándonos por teléfono."],
   ["¿Cuánto cuesta el servicio a domicilio?", "Relleno de 20 L a $18 y de 10 L a $10. Garrafón nuevo con agua a $108."],
   ["¿Qué tamaños de garrafón manejan?", "Garrafones de 20 litros y de 10 litros."],
-  ["¿Qué métodos de pago aceptan?", "Métodos de pago por confirmar."],
+  ["¿Qué métodos de pago aceptan?", "Efectivo, tarjeta o transferencia. Pagas al recibir tu pedido."],
   ["¿Cómo funcionan las promociones?", "Se aplican el día indicado. Por ejemplo, los martes: 3 rellenos por $49."],
-  ["¿Cómo funciona el programa de cliente frecuente?", "Regístrate y acumula pedidos para obtener beneficios. Detalles por confirmar."],
+  ["¿Cómo funciona el programa de cliente frecuente?", "Regístrate y acumula pedidos: cada 10 rellenos, el siguiente es gratis."],
 ];
 
 function Page() {
