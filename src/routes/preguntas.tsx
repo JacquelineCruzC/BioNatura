@@ -12,7 +12,7 @@ const faqs = [
   ["¿Qué tamaños de garrafón manejan?", "Garrafones de 20 litros y de 10 litros."],
   ["¿Qué métodos de pago aceptan?", "Efectivo, tarjeta o transferencia. Pagas al recibir tu pedido."],
   ["¿Cómo funcionan las promociones?", "Se aplican el día indicado. Por ejemplo, los martes: 3 rellenos por $49."],
-  ["¿Cómo funciona el programa de cliente frecuente?", "Regístrate y acumula pedidos para obtener beneficios. Detalles por confirmar."],
+  ["¿Cómo funciona el programa de cliente frecuente?", "Regístrate y acumula pedidos: cada 10 rellenos, el siguiente es gratis."],
 ];
 
 function Page() {
