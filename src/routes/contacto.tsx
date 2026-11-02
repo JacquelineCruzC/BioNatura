@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Phone, MessageCircle, MapPin, Clock } from "lucide-react";
-import { btn, Editable, meta, PageHeader, WHATSAPP_URL } from "@/components/site";
+import { Phone, MessageCircle, MapPin, Clock, Mail, Banknote } from "lucide-react";
+import { btn, meta, PageHeader, WHATSAPP_URL } from "@/components/site";
+import { CONTACT, MAP_EMBED_URL, MAP_LINK_URL } from "@/components/contact";
+
 
 export const Route = createFileRoute("/contacto")({
   head: () => meta("Contacto y pedidos", "Contacta a Bio Natural: teléfono, WhatsApp, dirección, horarios y formulario de pedido."),
@@ -13,11 +15,14 @@ const field = "w-full rounded-xl border border-input bg-muted px-4 py-3 text-car
 function Page() {
   const [sent, setSent] = useState(false);
   const info = [
-    { i: Phone, t: "Teléfono", d: <Editable>Por agregar</Editable> },
-    { i: MessageCircle, t: "WhatsApp", d: <a href={WHATSAPP_URL} className="text-primary underline">Escríbenos</a> },
-    { i: MapPin, t: "Dirección", d: <Editable>Por agregar</Editable> },
-    { i: Clock, t: "Horarios", d: <Editable>Por agregar</Editable> },
+    { i: Phone, t: "Teléfono", d: <a href={CONTACT.phoneTel} className="text-primary underline">{CONTACT.phoneDisplay}</a> },
+    { i: MessageCircle, t: "WhatsApp", d: <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-primary underline">{CONTACT.whatsappDisplay}</a> },
+    { i: Mail, t: "Correo", d: <a href={`mailto:${CONTACT.email}`} className="text-primary underline">{CONTACT.email}</a> },
+    { i: MapPin, t: "Dirección", d: <>{CONTACT.addressLine1}<br />{CONTACT.addressLine2}</> },
+    { i: Clock, t: "Horarios", d: <>{CONTACT.hoursWeek}<br />{CONTACT.hoursSunday}</> },
+    { i: Banknote, t: "Pagos", d: CONTACT.payments },
   ];
+
   return (
     <>
       <PageHeader eyebrow="Contacto" title="Haz tu pedido o escríbenos" />
@@ -32,13 +37,22 @@ function Page() {
               </div>
             ))}
           </div>
-          <div className="glass grid min-h-64 place-items-center rounded-3xl p-6 text-center">
-            <div>
-              <MapPin className="mx-auto h-10 w-10 text-accent" />
-              <p className="mt-2 font-display text-xl">Mapa de ubicación</p>
-              <p className="text-foreground/75">Se mostrará al agregar la dirección.</p>
+          <div className="glass overflow-hidden rounded-3xl p-0">
+            <iframe
+              title="Mapa de ubicación de Bio Natural"
+              src={MAP_EMBED_URL}
+              className="h-64 w-full border-0"
+              loading="lazy"
+            />
+            <div className="px-5 py-4 text-center">
+              <p className="font-display text-xl">Mapa de ubicación</p>
+              <p className="text-foreground/75">{CONTACT.addressFull}</p>
+              <a href={MAP_LINK_URL} target="_blank" rel="noreferrer" className="mt-1 inline-block text-primary underline">
+                Ver en mapa
+              </a>
             </div>
           </div>
+
         </div>
         <form
           onSubmit={(e) => { e.preventDefault(); setSent(true); }}
