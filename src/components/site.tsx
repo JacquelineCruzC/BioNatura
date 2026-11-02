@@ -20,7 +20,7 @@ const nav = [
 
 export function btn(kind: "primary" | "ghost" | "green" = "primary") {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-display text-base font-semibold transition hover:scale-105";
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 font-display text-base font-semibold transition hover:scale-105";
   if (kind === "ghost") return `${base} glass text-foreground`;
   if (kind === "green") return `${base} bg-secondary text-secondary-foreground shadow-glow`;
   return `${base} bg-water text-primary-foreground shadow-glow`;
@@ -40,30 +40,30 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <Link to="/" className="shrink-0">
             <img src={logo.url} alt="Bio Natural" className="h-14 w-auto rounded-xl bg-card/90 px-2" />
           </Link>
-          <nav className="hidden gap-1 xl:flex">
+          <nav className="hidden gap-0.5 xl:flex">
             {nav.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
                 activeOptions={{ exact: true }}
-                className="rounded-full px-3 py-2 text-sm font-semibold text-foreground/85 transition hover:bg-primary/20"
+                className="whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-semibold text-foreground/85 transition hover:bg-primary/20"
                 activeProps={{ className: "bg-primary/30 text-foreground" }}
               >
                 {n.label}
               </Link>
             ))}
           </nav>
-          <div className="hidden items-center gap-2 lg:flex">
-            <Link to="/login" className="px-3 text-sm font-semibold hover:text-accent">Iniciar sesión</Link>
-            <Link to="/registro" className="px-3 text-sm font-semibold hover:text-accent">Registrarse</Link>
+          <div className="hidden items-center gap-1 2xl:flex">
+            <Link to="/login" className="whitespace-nowrap px-2 text-sm font-semibold hover:text-accent">Iniciar sesión</Link>
+            <Link to="/registro" className="whitespace-nowrap px-2 text-sm font-semibold hover:text-accent">Registrarse</Link>
             <Link to="/contacto" className={btn()}>Pedir ahora</Link>
           </div>
-          <button className="xl:hidden" onClick={() => setOpen(!open)} aria-label="Menú">
+          <div className="flex items-center gap-2 2xl:hidden"><Link to="/contacto" className={`${btn()} hidden sm:inline-flex xl:hidden`}>Pedir ahora</Link><button onClick={() => setOpen(!open)} aria-label="Menú">
             {open ? <X /> : <Menu />}
-          </button>
+          </button></div>
         </div>
         {open && (
-          <nav className="grid gap-1 px-4 pb-4 xl:hidden">
+          <nav className="grid gap-1 px-4 pb-4 2xl:hidden">
             {nav.map((n) => (
               <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 font-semibold hover:bg-primary/20">
                 {n.label}
